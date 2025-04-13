@@ -1,0 +1,35 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:13
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres 
+    volumes:
+      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5025:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  python-loader:
+    build: ./ETL
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+

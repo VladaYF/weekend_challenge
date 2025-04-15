@@ -1,0 +1,4 @@
+product_id,name,category,base_price
+P100,Widget,A,10.0
+P200,Gadget,B,20.0
+P300,Thingamajig,C,30.0

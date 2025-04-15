@@ -1,0 +1,4 @@
+order_id,product_id,quantity,price
+O100,P100,2,10.0
+O100,P200,1,20.0
+O101,P200,2,20.0

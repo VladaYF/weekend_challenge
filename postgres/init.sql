@@ -1,3 +1,11 @@
+--logs
+CREATE TABLE logs (
+    day_number INTEGER,
+    table_name VARCHAR(50),
+    rows_count INTEGER,
+    load_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- raw layer
 
 CREATE TABLE products (

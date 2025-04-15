@@ -8,7 +8,7 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres 
     volumes:
-      - ./data/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5025:5432"
     healthcheck:
@@ -32,4 +32,3 @@ services:
     restart: always
     ports:
       - 8080:8080
-
